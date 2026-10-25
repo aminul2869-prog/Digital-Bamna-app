@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -23,7 +22,7 @@
                         dark: '#0f172a'
                     },
                     fontFamily: {
-                        sans: ['Hind Siliguri', 'sans-serif'],
+                        sans: ['Hind Siliguri', 'sans-serif']
                     }
                 }
             }
@@ -50,34 +49,31 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 pb-20 select-none">
+<body class="bg-slate-50 text-slate-800 pb-20">
 
     <!-- Header App Banner -->
-    <header class="bg-gradient-to-r from-teal-600 via-sky-600 to-emerald-600 text-white p-4 sticky top-0 z-50 shadow-md">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 text-2xl font-bold shadow-inner">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold leading-tight">বামনা উপজেলা ডিজিটাল সেবা</h1>
-                        <p class="text-xs text-teal-100 flex items-center gap-1">
-                            <i class="fa-solid fa-location-dot text-amber-300"></i> বরগুনা জেলা | স্মার্ট সেবা প্ল্যাটফর্ম
-                        </p>
-                    </div>
+    <header class="bg-gradient-to-r from-sky-600 to-primary text-white p-4 sticky top-0 z-40 shadow-md">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-landmark"></i>
                 </div>
-                <button onclick="switchTab('admin')" class="bg-white/15 hover:bg-white/25 active:scale-95 text-white p-2.5 rounded-xl border border-white/20 transition backdrop-blur-sm" title="অ্যাডমিন প্যানেল">
-                    <i class="fa-solid fa-user-shield text-lg"></i>
+                <div>
+                    <h1 class="text-lg font-bold leading-tight">বামনা উপজেলা ডিজিটাল সেবা</h1>
+                    <p class="text-xs text-sky-100">আপনার সেবায় সবসময়</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="switchTab('admin')" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-sm hover:bg-white/20 transition">
+                    <i class="fa-solid fa-user-shield"></i>
                 </button>
             </div>
+        </div>
 
-            <!-- Search Bar -->
-            <div class="mt-3 relative">
-                <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="যেকোনো সেবা, ডাক্তার, চালক বা নম্বর খুঁজুন..." 
-                    class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/90 text-slate-800 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 shadow-inner">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-            </div>
+        <!-- Search Bar -->
+        <div class="mt-3 relative">
+            <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="সেবা বা তথ্য খুঁজুন (যেমন: অ্যাম্বুলেন্স, ডাক্তার)..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/10 text-white placeholder-sky-200 text-sm focus:outline-none focus:bg-white/20 transition border border-white/10">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-sky-200 text-sm"></i>
         </div>
     </header>
 
@@ -85,234 +81,235 @@
     <main class="max-w-4xl mx-auto p-4">
 
         <!-- Announcement Marquee -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-amber-900 shadow-sm">
-            <span class="bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-[10px] shrink-0">জরুরি নোটিশ</span>
-            <marquee class="font-medium">বামনা উপজেলায় বিনামূল্যে রক্তদান ক্যাম্পেইন আগামী শুক্রবারে উপজেলা স্বাস্থ্য কমপ্লেক্সে অনুষ্ঠিত হবে। যেকোনো তথ্যের জন্য জরুরি সেবা অপশনে যোগাযোগ করুন।</marquee>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 mb-4 flex items-center space-x-3 shadow-sm">
+            <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-lg font-medium whitespace-nowrap">জরুরি ঘোষণা</span>
+            <marquee class="text-sm font-medium text-amber-900">বামনা উপজেলার সকল নাগরিকের জন্য ডিজিটাল সেবায় স্বাগতম। যেকোনো জরুরি প্রয়োজনে সংশ্লিষ্ট নম্বরে যোগাযোগ করুন।</marquee>
         </div>
 
-        <!-- Section 1: HOME DASHBOARD -->
+        <!-- SECTION 1: HOME DASHBOARD -->
         <section id="sec-home" class="tab-content block space-y-5">
             <!-- Quick Features Grid -->
             <div>
-                <h2 class="text-base font-bold text-slate-700 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-grid-2 text-sky-600"></i> ডিজিটাল সেবাসমূহ
+                <h2 class="text-base font-bold text-slate-700 mb-3 flex items-center">
+                    <i class="fa-solid fa-fire text-sky-500 mr-2"></i> জরুরি সেবা ও ক্যাটাগরি
                 </h2>
-                <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                    <button onclick="switchTab('info')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-teal-600 group-hover:text-white transition">
-                            <i class="fa-solid fa-landmark"></i>
-                        </div>
-                        <span class="text-xs font-semibold text-slate-700">উপজেলা পরিচয়</span>
-                    </button>
-
-                    <button onclick="switchTab('emergency')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-rose-600 group-hover:text-white transition">
+                <div class="grid grid-cols-3 gap-3">
+                    <button onclick="switchTab('emergency')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
                             <i class="fa-solid fa-truck-medical"></i>
                         </div>
-                        <span class="text-xs font-semibold text-slate-700">জরুরি সেবা</span>
+                        <span class="text-xs font-semibold text-slate-700">অ্যাম্বুলেন্স</span>
                     </button>
-
-                    <button onclick="switchTab('govt')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-sky-600 group-hover:text-white transition">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
-                        <span class="text-xs font-semibold text-slate-700">সরকারি তথ্য</span>
-                    </button>
-
-                    <button onclick="switchTab('education')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-indigo-600 group-hover:text-white transition">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <span class="text-xs font-semibold text-slate-700">শিক্ষা ও চিকিৎসা</span>
-                    </button>
-
-                    <button onclick="switchTab('transport')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-amber-600 group-hover:text-white transition">
-                            <i class="fa-solid fa-bus"></i>
-                        </div>
-                        <span class="text-xs font-semibold text-slate-700">যাতায়াত সেবা</span>
-                    </button>
-
-                    <button onclick="switchTab('market')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-emerald-600 group-hover:text-white transition">
+                    <button onclick="switchTab('marketplace')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <span class="text-xs font-semibold text-slate-700">মার্কেটপ্লেস</span>
                     </button>
-
-                    <button onclick="switchTab('social')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-purple-600 group-hover:text-white transition">
+                    <button onclick="switchTab('social')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
                             <i class="fa-solid fa-comments"></i>
                         </div>
-                        <span class="text-xs font-semibold text-slate-700">সোশ্যাল পোস্ট</span>
+                        <span class="text-xs font-semibold text-slate-700">সোশ্যাল ফিড</span>
                     </button>
-
-                    <button onclick="switchTab('feedback')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-blue-600 group-hover:text-white transition">
+                    <button onclick="switchTab('feedback')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
                             <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
-                        <span class="text-xs font-semibold text-slate-700">অভিযোগ বক্স</span>
+                        <span class="text-xs font-semibold text-slate-700">মতামত</span>
                     </button>
-
-                    <button onclick="switchTab('admin')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xl mb-1.5 group-hover:bg-slate-700 group-hover:text-white transition">
-                            <i class="fa-solid fa-sliders"></i>
+                    <button onclick="switchTab('blood')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-droplet"></i>
                         </div>
-                        <span class="text-xs font-semibold text-slate-700">অ্যাডমিন</span>
+                        <span class="text-xs font-semibold text-slate-700">ব্লাড ব্যাংক</span>
                     </button>
-                </div>
-            </div>
-
-            <!-- Emergency Quick Hotline Strip -->
-            <div class="bg-gradient-to-r from-rose-500 to-red-600 rounded-2xl p-4 text-white shadow-md">
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-bold text-sm flex items-center gap-2">
-                        <i class="fa-solid fa-phone-volume"></i> জরুরি নম্বরসমূহ
-                    </h3>
-                    <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">২৪/৭ অনলাইন</span>
-                </div>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <a href="tel:999" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl flex items-center gap-2 border border-white/20">
-                        <i class="fa-solid fa-shield-halved text-amber-300"></i>
-                        <div>
-                            <div class="font-bold">জাতীয় জরুরি সেবা</div>
-                            <div class="text-[11px] text-rose-100">৯৯৯</div>
+                    <button onclick="switchTab('gov')" class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-sky-200 hover:shadow transition group">
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-500 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-building-columns"></i>
                         </div>
-                    </a>
-                    <a href="tel:01711000000" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl flex items-center gap-2 border border-white/20">
-                        <i class="fa-solid fa-user-ninja text-amber-300"></i>
-                        <div>
-                            <div class="font-bold">বামনা পুলিশ থানা</div>
-                            <div class="text-[11px] text-rose-100">০১৭১১-০০০০০</div>
-                        </div>
-                    </a>
+                        <span class="text-xs font-semibold text-slate-700">সরকারি সেবা</span>
+                    </button>
                 </div>
             </div>
 
             <!-- Recent Highlights Carousel / Cards -->
             <div class="space-y-3">
-                <h3 class="text-sm font-bold text-slate-700 flex items-center gap-2">
-                    <i class="fa-solid fa-bullhorn text-teal-600"></i> জরুরি ঘোষণা ও খবর
-                </h3>
-                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-2">
-                    <span class="text-[10px] bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-bold">নতুন সেবা</span>
-                    <h4 class="font-bold text-slate-800 text-sm">বামনা ডিজিটাল প্ল্যাটফর্মে স্বাগতম</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">এখন থেকে বামনা উপজেলার যেকোনো জরুরি সেবা, রক্তদাতা, ডাক্তার, শিক্ষক, ড্রাইভার ও নোটিশ সহজেই এক ক্লিকে পাওয়া যাবে।</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: UPAZILA MAP & INFO -->
-        <section id="sec-info" class="tab-content hidden space-y-4">
-            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
-                <h2 class="text-base font-bold text-teal-700 flex items-center gap-2 border-b pb-2">
-                    <i class="fa-solid fa-map-location-dot"></i> বামনা উপজেলা পরিচিতি
+                <h2 class="text-base font-bold text-slate-700 flex items-center">
+                    <i class="fa-solid fa-bullhorn text-sky-500 mr-2"></i> সাম্প্রতিক নোটিশ ও আপডেট
                 </h2>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                        <span class="text-slate-500 block">মোট আয়তন</span>
-                        <span class="font-bold text-slate-800 text-sm">১০১.০৫ বর্গ কিমি</span>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-400">
+                        <span class="bg-sky-50 text-sky-600 px-2 py-0.5 rounded font-medium">প্রশাসন</span>
+                        <span>আজ প্রকাশিত</span>
                     </div>
-                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                        <span class="text-slate-500 block">প্রধান নদী</span>
-                        <span class="font-bold text-slate-800 text-sm">বিষখালী ও পোনা নদী</span>
-                    </div>
-                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                        <span class="text-slate-500 block">ইউনিয়ন পরিষদ</span>
-                        <span class="font-bold text-slate-800 text-sm">৪ টি</span>
-                    </div>
-                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                        <span class="text-slate-500 block">জেলা</span>
-                        <span class="font-bold text-slate-800 text-sm">বরগুনা</span>
-                    </div>
+                    <h3 class="font-bold text-slate-800 text-sm">বামনা উপজেলায় বিনামূল্যে স্বাস্থ্য ক্যাম্পেইন</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">আগামী শুক্রবার উপজেলা স্বাস্থ্য কমপ্লেক্সে বিনামূল্যে সাধারণ চিকিৎসা ও ওষুধ বিতরণ করা হবে।</p>
                 </div>
+            </div>
 
-                <div class="space-y-2">
-                    <h3 class="font-bold text-xs text-slate-700">ইউনিয়নসমূহের তালিকা:</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">১. বামনা সদর</span>
-                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">২. বুকাবুনিয়া</span>
-                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">৩. রামনা</span>
-                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">৪. দাওয়াতলা</span>
-                    </div>
-                </div>
-
-                <div class="space-y-2 pt-2">
-                    <h3 class="font-bold text-xs text-slate-700">দর্শনীয় স্থানসমূহ:</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        • বুকাবুনিয়ার ঐতিহাসিক বিষখালী নদীর পাড়<br>
-                        • বামনা জমিদার বাড়ি ও প্রাচীন মসজিদ<br>
-                        • রামনা স্লুইজগেট ও প্রাকৃতিক সৌন্দর্য
-                    </p>
-                </div>
-
-                <!-- Google Maps Embed -->
-                <div class="pt-2">
-                    <h3 class="font-bold text-xs text-slate-700 mb-2">গুগল ম্যাপে বামনা:</h3>
-                    <div class="w-full h-48 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
-                        <iframe class="w-full h-full border-0" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59048.88998825838!2d89.98188165!3d22.3023071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a54d688cf73a5a7%3A0x6b772c29571fa088!2sBamna%20Upazila!5e0!3m2!1sen!2sbd!4v1700000000000" 
-                            allowfullscreen="" loading="lazy"></iframe>
-                    </div>
+            <!-- Google Maps Embed -->
+            <div class="space-y-3">
+                <h2 class="text-base font-bold text-slate-700 flex items-center">
+                    <i class="fa-solid fa-map-location-dot text-sky-500 mr-2"></i> বামনা উপজেলার ম্যাপ
+                </h2>
+                <div class="w-full h-48 rounded-2xl overflow-hidden shadow-sm border border-slate-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.100!2d90.0!3d22.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEyJzAwLjAiTiA5MMKwMDAnMDAuMCJF!5e0!3m2!1sbn!2sbd!4v1600000000000!5m2!1sbn!2sbd" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: EMERGENCY SERVICES -->
+        <!-- SECTION 2: EMERGENCY SERVICES -->
         <section id="sec-emergency" class="tab-content hidden space-y-4">
-            <h2 class="text-base font-bold text-rose-600 flex items-center gap-2">
-                <i class="fa-solid fa-kit-medical"></i> জরুরি সেবাসমূহ
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-truck-medical text-rose-500 mr-2"></i> জরুরি অ্যাম্বুলেন্স সেবা
             </h2>
+            <div id="ambulanceList" class="space-y-3">
+                <!-- Google Sheet Data will load here dynamically -->
+                <div class="text-center py-8 text-slate-400 text-sm">ডিপোজিটরি থেকে অ্যাম্বুলেন্সের ডাটা লোড হচ্ছে...</div>
+            </div>
+        </section>
 
-            <!-- Emergency Tabs -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-building-hospital"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm text-slate-800">উপজেলা স্বাস্থ্য কমপ্লেক্স</h3>
-                            <p class="text-xs text-slate-500">বামনা, বরগুনা</p>
-                        </div>
+        <!-- SECTION 3: MARKETPLACE -->
+        <section id="sec-market" class="tab-content hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                    <i class="fa-solid fa-store text-emerald-500 mr-2"></i> স্থানীয় বাজার ও কেনাবেচা
+                </h2>
+                <button onclick="toggleModal('productModal')" class="bg-emerald-500 text-white text-xs px-3 py-2 rounded-xl font-medium shadow-sm hover:bg-emerald-600 transition flex items-center">
+                    <i class="fa-solid fa-plus mr-1.5"></i> পণ্য বা বিজ্ঞাপন দিন
+                </button>
+            </div>
+            <div id="marketList" class="grid grid-cols-2 gap-3">
+                <!-- Market items -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: GOVT SERVICES -->
+        <section id="sec-gov" class="tab-content hidden space-y-4">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-building-columns text-sky-500 mr-2"></i> গুরুত্বপূর্ণ সরকারি ও হেল্পলাইন নম্বর
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">জাতীয় জরুরি সেবা</h3>
+                        <p class="text-xs text-slate-500">পুলিশ, ফায়ার সার্ভিস, অ্যাম্বুলেন্স</p>
                     </div>
-                    <a href="tel:01700000000" class="bg-rose-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-rose-700 active:scale-95 transition">কল করুন</a>
+                    <a href="tel:999" class="bg-sky-50 text-sky-600 px-3 py-1.5 rounded-xl text-sm font-bold shadow-sm hover:bg-sky-100 transition">999</a>
                 </div>
-
-                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-truck-medical"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm text-slate-800">সরকারি অ্যাম্বুলেন্স</h3>
-                            <p class="text-xs text-slate-500">২৪ ঘণ্টা সার্ভিস</p>
-                        </div>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">দুদক হটলাইন</h3>
+                        <p class="text-xs text-slate-500">দুর্নীতি দমন কমিশন</p>
                     </div>
-                    <a href="tel:01711111111" class="bg-blue-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-blue-700 active:scale-95 transition">কল করুন</a>
+                    <a href="tel:106" class="bg-sky-50 text-sky-600 px-3 py-1.5 rounded-xl text-sm font-bold shadow-sm hover:bg-sky-100 transition">106</a>
                 </div>
-
-                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-user-ninja"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm text-slate-800">বামনা থানা পুলিশ</h3>
-                            <p class="text-xs text-slate-500">আইনি সহায়তা হেল্পলাইন</p>
-                        </div>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">জাতীয় পরিচয়পত্র সেবা</h3>
+                        <p class="text-xs text-slate-500">এনআইডি সংক্রান্ত সহায়তা</p>
                     </div>
-                    <a href="tel:01711223344" class="bg-slate-800 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-slate-900 active:scale-95 transition">কল করুন</a>
+                    <a href="tel:105" class="bg-sky-50 text-sky-600 px-3 py-1.5 rounded-xl text-sm font-bold shadow-sm hover:bg-sky-100 transition">105</a>
                 </div>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">স্বাস্থ্য বাতায়ন</h3>
+                        <p class="text-xs text-slate-500">বিনামূল্যে চিকিৎসা পরামর্শ</p>
+                    </div>
+                    <a href="tel:16263" class="bg-sky-50 text-sky-600 px-3 py-1.5 rounded-xl text-sm font-bold shadow-sm hover:bg-sky-100 transition">16263</a>
+                </div>
+            </div>
+        </section>
 
-                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
-                            <i class="fa-solid fa-fire-extinguisher"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm text-slate-800">ফায়ার সার্ভিস স্টেশন</h3>
-                            <p class="text-xs text-slate-500">আগুন ও জরুরি উদ্ধার</p>
+        <!-- SECTION 5: EDUCATION & HEALTH -->
+        <section id="sec-education" class="tab-content hidden space-y-4">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-graduation-cap text-indigo-500 mr-2"></i> শিক্ষা ও স্বাস্থ্য প্রতিষ্ঠান
+            </h2>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">বামনা উপজেলা স্বাস্থ্য কমপ্লেক্স</h3>
+                        <p class="text-xs text-slate-500">সরকারি হাসপাতাল</p>
+                    </div>
+                    <a href="tel:01700000000" class="bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm">কল করুন</a>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">বামনা সরকারি ডিগ্রি কলেজ</h3>
+                        <p class="text-xs text-slate-500">শিক্ষা প্রতিষ্ঠান</p>
+                    </div>
+                    <a href="tel:01700000001" class="bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm">কল করুন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TRANSPORT -->
+        <section id="sec-transport" class="tab-content hidden space-y-4">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-bus text-amber-500 mr-2"></i> পরিবহন ও যাতায়াত ব্যবস্থা
+            </h2>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm">বরিশাল ও ঢাকা বাস কাউন্টার</h3>
+                        <p class="text-xs text-slate-500">দূরপাল্লার বাস সার্ভিস</p>
+                    </div>
+                    <a href="tel:01700000002" class="bg-amber-50 text-amber-600 px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm">যোগাযোগ</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: MARKETPLACE -->
+        <section id="sec-market" class="tab-content hidden space-y-4">
+            <!-- Market content alternative if needed -->
+        </section>
+
+        <!-- SECTION 8: SOCIAL FEED -->
+        <section id="sec-social" class="tab-content hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                    <i class="fa-solid fa-comments text-indigo-500 mr-2"></i> সোশ্যাল ফিড ও আলোচনা
+                </h2>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <input type="text" id="postAuthor" placeholder="আপনার নাম" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-500">
+                <textarea id="postContent" rows="3" placeholder="বামনা সম্পর্কে কিছু লিখুন বা মতামত জানান..." class="w-full p-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-500"></textarea>
+                <button onclick="addSocialPost()" class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-medium text-sm shadow-sm hover:bg-indigo-700 transition">পোস্ট করুন</button>
+            </div>
+            <div id="socialFeedList" class="space-y-3">
+                <!-- Posts dynamic -->
+            </div>
+        </section>
+
+        <!-- SECTION 9: FEEDBACK & ADMIN INBOX -->
+        <section id="sec-feedback" class="tab-content hidden space-y-4">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-envelope-open-text text-amber-500 mr-2"></i> মতামত ও অভিযোগ বাক্স
+            </h2>
+            <form onsubmit="submitFeedback(event)" class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <input type="text" id="fbName" placeholder="আপনার নাম" required class="w-full p-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500">
+                <input type="tel" id="fbPhone" placeholder="মোবাইল নম্বর" required class="w-full p-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500">
+                <textarea id="fbMsg" rows="3" placeholder="আপনার অভিযোগ বা পরামর্শ এখানে লিখুন..." required class="w-full p-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                <button type="submit" class="w-full bg-amber-500 text-white py-2.5 rounded-xl font-medium text-sm shadow-sm hover:bg-amber-600 transition">ارسال / পাঠান</button>
+            </form>
+        </section>
+
+        <!-- SECTION 10: ADMIN PANEL -->
+        <section id="sec-admin" class="tab-content hidden space-y-4">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-user-shield text-sky-600 mr-2"></i> এডমিন প্যানেল
+            </h2>
+            <div id="adminAuth" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center space-y-3">
+                <p class="text-xs text-slate-600">এডমিন প্যানেলে প্রবেশ করতে পাসওয়ার্ড দিন</p>
+                <input type="password" id="adminPass" placeholder="পাসওয়ার্ড দিন" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm text-center focus:outline-none focus:border-sky-500">
+                <button onclick="loginAdmin()" class="w-full bg-sky-600 text-white py-2.5 rounded-xl font-medium text-sm shadow-sm hover:bg-sky-700 transition">লগইন করুন</button>
+            </div>
+            <div id="adminDashboard" class="hidden space-y-4">
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-center justify-between">
+                    <span class="text-xs font-bold text-emerald-800">এডমিন মোড সক্রিয়</span>
+                    <button onclick="loadAdmi                           <p class="text-xs text-slate-500">আগুন ও জরুরি উদ্ধার</p>
                         </div>
                     </div>
                     <a href="tel:01722334455" class="bg-amber-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-amber-700 active:scale-95 transition">কল করুন</a>
@@ -881,4 +878,4 @@
     </script>
 </body>
 </html>
-```
+
