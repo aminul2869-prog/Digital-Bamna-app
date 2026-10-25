@@ -1,0 +1,884 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বামনা উপজেলা ডিজিটাল সেবা</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font - Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0284c7',
+                        secondary: '#0d9488',
+                        accent: '#16a34a',
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-tab {
+            color: #0284c7;
+            font-weight: 700;
+        }
+        .active-tab i {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 pb-20 select-none">
+
+    <!-- Header App Banner -->
+    <header class="bg-gradient-to-r from-teal-600 via-sky-600 to-emerald-600 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 text-2xl font-bold shadow-inner">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold leading-tight">বামনা উপজেলা ডিজিটাল সেবা</h1>
+                        <p class="text-xs text-teal-100 flex items-center gap-1">
+                            <i class="fa-solid fa-location-dot text-amber-300"></i> বরগুনা জেলা | স্মার্ট সেবা প্ল্যাটফর্ম
+                        </p>
+                    </div>
+                </div>
+                <button onclick="switchTab('admin')" class="bg-white/15 hover:bg-white/25 active:scale-95 text-white p-2.5 rounded-xl border border-white/20 transition backdrop-blur-sm" title="অ্যাডমিন প্যানেল">
+                    <i class="fa-solid fa-user-shield text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mt-3 relative">
+                <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="যেকোনো সেবা, ডাক্তার, চালক বা নম্বর খুঁজুন..." 
+                    class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/90 text-slate-800 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 shadow-inner">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto p-4">
+
+        <!-- Announcement Marquee -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 mb-4 flex items-center gap-2 text-xs text-amber-900 shadow-sm">
+            <span class="bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-[10px] shrink-0">জরুরি নোটিশ</span>
+            <marquee class="font-medium">বামনা উপজেলায় বিনামূল্যে রক্তদান ক্যাম্পেইন আগামী শুক্রবারে উপজেলা স্বাস্থ্য কমপ্লেক্সে অনুষ্ঠিত হবে। যেকোনো তথ্যের জন্য জরুরি সেবা অপশনে যোগাযোগ করুন।</marquee>
+        </div>
+
+        <!-- Section 1: HOME DASHBOARD -->
+        <section id="sec-home" class="tab-content block space-y-5">
+            <!-- Quick Features Grid -->
+            <div>
+                <h2 class="text-base font-bold text-slate-700 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-grid-2 text-sky-600"></i> ডিজিটাল সেবাসমূহ
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    <button onclick="switchTab('info')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-teal-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">উপজেলা পরিচয়</span>
+                    </button>
+
+                    <button onclick="switchTab('emergency')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-rose-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">জরুরি সেবা</span>
+                    </button>
+
+                    <button onclick="switchTab('govt')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-sky-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">সরকারি তথ্য</span>
+                    </button>
+
+                    <button onclick="switchTab('education')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-indigo-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">শিক্ষা ও চিকিৎসা</span>
+                    </button>
+
+                    <button onclick="switchTab('transport')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-amber-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-bus"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">যাতায়াত সেবা</span>
+                    </button>
+
+                    <button onclick="switchTab('market')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-emerald-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">মার্কেটপ্লেস</span>
+                    </button>
+
+                    <button onclick="switchTab('social')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-purple-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">সোশ্যাল পোস্ট</span>
+                    </button>
+
+                    <button onclick="switchTab('feedback')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-1.5 group-hover:bg-blue-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">অভিযোগ বক্স</span>
+                    </button>
+
+                    <button onclick="switchTab('admin')" class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md active:scale-95 transition flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xl mb-1.5 group-hover:bg-slate-700 group-hover:text-white transition">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-700">অ্যাডমিন</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Emergency Quick Hotline Strip -->
+            <div class="bg-gradient-to-r from-rose-500 to-red-600 rounded-2xl p-4 text-white shadow-md">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume"></i> জরুরি নম্বরসমূহ
+                    </h3>
+                    <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">২৪/৭ অনলাইন</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <a href="tel:999" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl flex items-center gap-2 border border-white/20">
+                        <i class="fa-solid fa-shield-halved text-amber-300"></i>
+                        <div>
+                            <div class="font-bold">জাতীয় জরুরি সেবা</div>
+                            <div class="text-[11px] text-rose-100">৯৯৯</div>
+                        </div>
+                    </a>
+                    <a href="tel:01711000000" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl flex items-center gap-2 border border-white/20">
+                        <i class="fa-solid fa-user-ninja text-amber-300"></i>
+                        <div>
+                            <div class="font-bold">বামনা পুলিশ থানা</div>
+                            <div class="text-[11px] text-rose-100">০১৭১১-০০০০০</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Highlights Carousel / Cards -->
+            <div class="space-y-3">
+                <h3 class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-teal-600"></i> জরুরি ঘোষণা ও খবর
+                </h3>
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                    <span class="text-[10px] bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-bold">নতুন সেবা</span>
+                    <h4 class="font-bold text-slate-800 text-sm">বামনা ডিজিটাল প্ল্যাটফর্মে স্বাগতম</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">এখন থেকে বামনা উপজেলার যেকোনো জরুরি সেবা, রক্তদাতা, ডাক্তার, শিক্ষক, ড্রাইভার ও নোটিশ সহজেই এক ক্লিকে পাওয়া যাবে।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: UPAZILA MAP & INFO -->
+        <section id="sec-info" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h2 class="text-base font-bold text-teal-700 flex items-center gap-2 border-b pb-2">
+                    <i class="fa-solid fa-map-location-dot"></i> বামনা উপজেলা পরিচিতি
+                </h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-500 block">মোট আয়তন</span>
+                        <span class="font-bold text-slate-800 text-sm">১০১.০৫ বর্গ কিমি</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-500 block">প্রধান নদী</span>
+                        <span class="font-bold text-slate-800 text-sm">বিষখালী ও পোনা নদী</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-500 block">ইউনিয়ন পরিষদ</span>
+                        <span class="font-bold text-slate-800 text-sm">৪ টি</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span class="text-slate-500 block">জেলা</span>
+                        <span class="font-bold text-slate-800 text-sm">বরগুনা</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-bold text-xs text-slate-700">ইউনিয়নসমূহের তালিকা:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">১. বামনা সদর</span>
+                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">২. বুকাবুনিয়া</span>
+                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">৩. রামনা</span>
+                        <span class="bg-teal-50 text-teal-700 border border-teal-200 text-xs px-3 py-1 rounded-full font-medium">৪. দাওয়াতলা</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-bold text-xs text-slate-700">দর্শনীয় স্থানসমূহ:</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        • বুকাবুনিয়ার ঐতিহাসিক বিষখালী নদীর পাড়<br>
+                        • বামনা জমিদার বাড়ি ও প্রাচীন মসজিদ<br>
+                        • রামনা স্লুইজগেট ও প্রাকৃতিক সৌন্দর্য
+                    </p>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="pt-2">
+                    <h3 class="font-bold text-xs text-slate-700 mb-2">গুগল ম্যাপে বামনা:</h3>
+                    <div class="w-full h-48 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
+                        <iframe class="w-full h-full border-0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59048.88998825838!2d89.98188165!3d22.3023071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a54d688cf73a5a7%3A0x6b772c29571fa088!2sBamna%20Upazila!5e0!3m2!1sen!2sbd!4v1700000000000" 
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: EMERGENCY SERVICES -->
+        <section id="sec-emergency" class="tab-content hidden space-y-4">
+            <h2 class="text-base font-bold text-rose-600 flex items-center gap-2">
+                <i class="fa-solid fa-kit-medical"></i> জরুরি সেবাসমূহ
+            </h2>
+
+            <!-- Emergency Tabs -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-building-hospital"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-800">উপজেলা স্বাস্থ্য কমপ্লেক্স</h3>
+                            <p class="text-xs text-slate-500">বামনা, বরগুনা</p>
+                        </div>
+                    </div>
+                    <a href="tel:01700000000" class="bg-rose-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-rose-700 active:scale-95 transition">কল করুন</a>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-800">সরকারি অ্যাম্বুলেন্স</h3>
+                            <p class="text-xs text-slate-500">২৪ ঘণ্টা সার্ভিস</p>
+                        </div>
+                    </div>
+                    <a href="tel:01711111111" class="bg-blue-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-blue-700 active:scale-95 transition">কল করুন</a>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-800">বামনা থানা পুলিশ</h3>
+                            <p class="text-xs text-slate-500">আইনি সহায়তা হেল্পলাইন</p>
+                        </div>
+                    </div>
+                    <a href="tel:01711223344" class="bg-slate-800 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-slate-900 active:scale-95 transition">কল করুন</a>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-fire-extinguisher"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-800">ফায়ার সার্ভিস স্টেশন</h3>
+                            <p class="text-xs text-slate-500">আগুন ও জরুরি উদ্ধার</p>
+                        </div>
+                    </div>
+                    <a href="tel:01722334455" class="bg-amber-600 text-white text-xs px-3 py-2 rounded-xl font-bold hover:bg-amber-700 active:scale-95 transition">কল করুন</a>
+                </div>
+            </div>
+
+            <!-- Blood Donor List -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <div class="flex items-center justify-between border-b pb-2">
+                    <h3 class="font-bold text-sm text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-droplet text-rose-600"></i> রক্তদাতাদের তালিকা
+                    </h3>
+                    <select id="bloodFilter" onchange="filterBlood()" class="text-xs border rounded-lg px-2 py-1 bg-slate-50 focus:outline-none">
+                        <option value="all">সব ব্লাড গ্রুপ</option>
+                        <option value="A+">A+</option>
+                        <option value="B+">B+</option>
+                        <option value="O+">O+</option>
+                        <option value="AB+">AB+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+
+                <div id="bloodList" class="space-y-2 text-xs">
+                    <div class="blood-item p-2.5 bg-slate-50 rounded-xl flex items-center justify-between border" data-group="O+">
+                        <div>
+                            <div class="font-bold text-slate-800">রাশেদুল ইসলাম</div>
+                            <div class="text-[11px] text-slate-500">বামনা সদর | ব্লাড গ্রুপ: <span class="font-bold text-rose-600">O+</span></div>
+                        </div>
+                        <a href="tel:01712345678" class="bg-rose-100 text-rose-700 px-3 py-1.5 rounded-lg font-bold">কল</a>
+                    </div>
+                    <div class="blood-item p-2.5 bg-slate-50 rounded-xl flex items-center justify-between border" data-group="A+">
+                        <div>
+                            <div class="font-bold text-slate-800">আরিফ হোসেন</div>
+                            <div class="text-[11px] text-slate-500">বুকাবুনিয়া | ব্লাড গ্রুপ: <span class="font-bold text-rose-600">A+</span></div>
+                        </div>
+                        <a href="tel:01798765432" class="bg-rose-100 text-rose-700 px-3 py-1.5 rounded-lg font-bold">কল</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: GOVT SERVICES -->
+        <section id="sec-govt" class="tab-content hidden space-y-4">
+            <h2 class="text-base font-bold text-sky-700 flex items-center gap-2">
+                <i class="fa-solid fa-building-columns"></i> সরকারি সেবা ও জনপ্রতিনিধি
+            </h2>
+
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                    <h3 class="font-bold text-xs text-sky-800 uppercase tracking-wider border-b pb-1">উপজেলা প্রশাসন</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+                            <div>
+                                <div class="font-bold text-slate-800">উপজেলা নির্বাহী অফিসার (UNO)</div>
+                                <div class="text-[11px] text-slate-500">উপজেলা কার্যালয়, বামনা</div>
+                            </div>
+                            <a href="tel:01700000001" class="bg-sky-600 text-white px-3 py-1.5 rounded-lg font-bold">কল</a>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+                            <div>
+                                <div class="font-bold text-slate-800">উপজেলা পরিষদ চেয়ারম্যান</div>
+                                <div class="text-[11px] text-slate-500">উপজেলা পরিষদ</div>
+                            </div>
+                            <a href="tel:01700000002" class="bg-sky-600 text-white px-3 py-1.5 rounded-lg font-bold">কল</a>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+                            <div>
+                                <div class="font-bold text-slate-800">সহকারী কমিশনার (ভূমি) / এসি ল্যান্ড</div>
+                                <div class="text-[11px] text-slate-500">ভূমি অফিস, বামনা</div>
+                            </div>
+                            <a href="tel:01700000003" class="bg-sky-600 text-white px-3 py-1.5 rounded-lg font-bold">কল</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                    <h3 class="font-bold text-xs text-sky-800 uppercase tracking-wider border-b pb-1">পল্লী বিদ্যুৎ ও ইউটিলিটি</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+                            <div>
+                                <div class="font-bold text-slate-800">পল্লী বিদ্যুৎ অভিযোগ কেন্দ্র</div>
+                                <div class="text-[11px] text-slate-500">বামনা সাব-স্টেশন</div>
+                            </div>
+                            <a href="tel:01700000004" class="bg-amber-600 text-white px-3 py-1.5 rounded-lg font-bold">কল</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: EDUCATION & HEALTH -->
+        <section id="sec-education" class="tab-content hidden space-y-4">
+            <h2 class="text-base font-bold text-indigo-700 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> শিক্ষা ও চিকিৎসা প্রতিষ্ঠান
+            </h2>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-xs text-indigo-800 border-b pb-1">কলেজ ও মাধ্যমিক বিদ্যালয়সমূহ</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <div class="font-bold text-slate-800">বামনা সরকারি সারওয়ার জান ডিগ্রি কলেজ</div>
+                        <div class="text-[11px] text-slate-500">বামনা সদর | স্থাপিত: ১৯৬৯</div>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <div class="font-bold text-slate-800">বামনা সারওয়ার জান মডেল উচ্চ বিদ্যালয়</div>
+                        <div class="text-[11px] text-slate-500">বামনা সদর</div>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <div class="font-bold text-slate-800">বুকাবুনিয়া আদর্শ হাই স্কুল</div>
+                        <div class="text-[11px] text-slate-500">বুকাবুনিয়া ইউনিয়ন</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-xs text-indigo-800 border-b pb-1">ডায়াগনস্টিক ও বিশেষজ্ঞ ডাক্তার</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <div>
+                            <div class="font-bold text-slate-800">ডায়াবেটিস ও মেডিসিন চেম্বার</div>
+                            <div class="text-[11px] text-slate-500">ডাক্তার সিরিয়াল ও পরামর্শের জন্য</div>
+                        </div>
+                        <a href="tel:01755555555" class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg font-bold">সিরিয়াল</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: TRANSPORT -->
+        <section id="sec-transport" class="tab-content hidden space-y-4">
+            <h2 class="text-base font-bold text-amber-600 flex items-center gap-2">
+                <i class="fa-solid fa-bus"></i> পরিবহন ও যাতায়াত তথ্য
+            </h2>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-xs text-amber-800 border-b pb-1">বাস কাউন্টার ও সময়সূচি</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
+                        <div>
+                            <div class="font-bold text-slate-800">বামনা - ঢাকা ডাইরেক্ট বাস</div>
+                            <div class="text-[11px] text-slate-500">সকাল ৮:০০ ও রাত ৮:৩০ মিনিট</div>
+                        </div>
+                        <a href="tel:01766666666" class="bg-amber-600 text-white px-3 py-1.5 rounded-lg font-bold">টিকিট</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-xs text-amber-800 border-b pb-1">স্থানীয় সিএনজি / অটো ড্রাইভার ডিরেক্টরি</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
+                        <div>
+                            <div class="font-bold text-slate-800">মো: জহির (সিএনজি চালক)</div>
+                            <div class="text-[11px] text-slate-500">রুট: বামনা - মঠবাড়িয়া - পাথরঘাটা</div>
+                        </div>
+                        <a href="tel:01777777777" class="bg-slate-700 text-white px-3 py-1.5 rounded-lg font-bold">কল</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: MARKETPLACE -->
+        <section id="sec-market" class="tab-content hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-emerald-700 flex items-center gap-2">
+                    <i class="fa-solid fa-store"></i> লোকাল মার্কেটপ্লেস ও নোটিশ
+                </h2>
+                <button onclick="toggleModal('productModal')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold hover:bg-emerald-700">
+                    + নতুন বিজ্ঞাপন
+                </button>
+            </div>
+
+            <div id="marketList" class="grid grid-cols-2 gap-3">
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm p-3 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-24 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-3xl mb-2">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">বিক্রি হবে</span>
+                        <h4 class="font-bold text-xs text-slate-800 mt-1">সেকেন্ড হ্যান্ড ফোন</h4>
+                        <p class="text-[11px] text-slate-500">ভালো কন্ডিশন, ৩ মাস ব্যবহার করা।</p>
+                    </div>
+                    <div class="mt-2 pt-2 border-t flex items-center justify-between">
+                        <span class="font-bold text-xs text-emerald-600">৳ ৪,৫০০</span>
+                        <a href="tel:01788888888" class="bg-emerald-600 text-white text-[10px] px-2 py-1 rounded">কল</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: SOCIAL FEED -->
+        <section id="sec-social" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h3 class="font-bold text-sm text-purple-800 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i> পাবলিক পোস্ট করুন
+                </h3>
+                <textarea id="postContent" rows="3" placeholder="বামনা উপজেলার সমস্যা বা আপনার অনুভূতি লিখুন..." class="w-full p-3 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-purple-400 bg-slate-50"></textarea>
+                <div class="flex justify-between items-center">
+                    <input type="text" id="postAuthor" placeholder="আপনার নাম" class="text-xs p-2 border rounded-xl bg-slate-50 w-1/2">
+                    <button onclick="addSocialPost()" class="bg-purple-600 text-white text-xs px-4 py-2 rounded-xl font-bold hover:bg-purple-700">পোস্ট করুন</button>
+                </div>
+            </div>
+
+            <div id="socialFeedList" class="space-y-3">
+                <!-- Posts dynamic insertion -->
+            </div>
+        </section>
+
+        <!-- Section 9: FEEDBACK & ADMIN INBOX -->
+        <section id="sec-feedback" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h2 class="text-base font-bold text-blue-700 flex items-center gap-2 border-b pb-2">
+                    <i class="fa-solid fa-envelope-open-text"></i> সরাসরি এডমিন ইনবক্স / অভিযোগ বক্স
+                </h2>
+                <p class="text-xs text-slate-500">আপনার এলাকার কোনো সমস্যা বা পরামর্শ সরাসরি অ্যাডমিনকে জানাতে নিচের ফর্মটি পূরণ করুন।</p>
+                <form onsubmit="submitFeedback(event)" class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold mb-1 text-slate-700">আপনার নাম</label>
+                        <input type="text" id="fbName" required placeholder="নাম লিখুন" class="w-full p-2.5 rounded-xl border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1 text-slate-700">মোবাইল নম্বর</label>
+                        <input type="tel" id="fbPhone" required placeholder="০১৭XXXXXXXX" class="w-full p-2.5 rounded-xl border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1 text-slate-700">বার্তা বা অভিযোগের বিবরণ</label>
+                        <textarea id="fbMsg" rows="3" required placeholder="বিস্তারিত লিখুন..." class="w-full p-2.5 rounded-xl border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded-xl hover:bg-blue-700 shadow-md">বার্তা পাঠান</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 10: ADMIN PANEL -->
+        <section id="sec-admin" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <h2 class="text-base font-bold text-slate-800 flex items-center gap-2 border-b pb-2">
+                    <i class="fa-solid fa-user-shield text-sky-600"></i> অ্যাডমিন কন্ট্রোল প্যানেল
+                </h2>
+
+                <div id="adminAuth" class="space-y-3">
+                    <p class="text-xs text-slate-500">অ্যাডমিন প্যানেলে প্রবেশ করতে পাসকোড লিখুন (ডিমো পাসওয়ার্ড: <span class="font-bold text-slate-800">1234</span>)</p>
+                    <input type="password" id="adminPass" placeholder="পাসকোড দিন" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
+                    <button onclick="loginAdmin()" class="w-full bg-slate-800 text-white text-xs font-bold py-2.5 rounded-xl">লগইন করুন</button>
+                </div>
+
+                <div id="adminDashboard" class="hidden space-y-4 pt-2">
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-xs text-emerald-800">
+                        <i class="fa-solid fa-circle-check text-emerald-600"></i> সফলভাবে লগইন হয়েছে! আপনি এখন ডাটা পরিবর্তন করতে পারবেন।
+                    </div>
+
+                    <!-- Received Feedback Messages -->
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-xs text-slate-700">প্রাপ্ত অভিযোগ ও ইনবক্স মেসেজ:</h3>
+                        <div id="adminFeedbackList" class="space-y-2 text-xs">
+                            <!-- Messages will load dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Google Sheets Integration Note -->
+                    <div class="bg-sky-50 p-3 rounded-xl border border-sky-200 text-xs space-y-2">
+                        <h4 class="font-bold text-sky-800 flex items-center gap-1">
+                            <i class="fa-solid fa-file-excel"></i> গুগল শিট (Google Sheets) কানেকশন গাইড
+                        </h4>
+                        <p class="text-[11px] text-sky-900 leading-relaxed">
+                            আপনি সরাসরি আপনার মোবাইল থেকে Google Sheet এডিট করে এই অ্যাপের তথ্য লাইভ আপডেট করতে পারবেন। এর জন্য গুগল শিটের **"Share -> Anyone with link"** করে CSV বা Web App API আকারে লিঙ্কটি যুক্ত করে দেওয়া সম্ভব।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto flex justify-around items-center text-center py-2 text-[10px] text-slate-500">
+            <button onclick="switchTab('home')" id="tab-home" class="nav-btn active-tab flex flex-col items-center">
+                <i class="fa-solid fa-house text-lg mb-0.5 transition"></i>
+                <span>হোম</span>
+            </button>
+            <button onclick="switchTab('emergency')" id="tab-emergency" class="nav-btn flex flex-col items-center">
+                <i class="fa-solid fa-kit-medical text-lg mb-0.5 transition"></i>
+                <span>জরুরি</span>
+            </button>
+            <button onclick="switchTab('market')" id="tab-market" class="nav-btn flex flex-col items-center">
+                <i class="fa-solid fa-store text-lg mb-0.5 transition"></i>
+                <span>মার্কেট</span>
+            </button>
+            <button onclick="switchTab('social')" id="tab-social" class="nav-btn flex flex-col items-center">
+                <i class="fa-solid fa-comments text-lg mb-0.5 transition"></i>
+                <span>সোশ্যাল</span>
+            </button>
+            <button onclick="switchTab('feedback')" id="tab-feedback" class="nav-btn flex flex-col items-center">
+                <i class="fa-solid fa-envelope text-lg mb-0.5 transition"></i>
+                <span>ইনবক্স</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Add Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-4 space-y-3">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">পণ্য/বিজ্ঞাপন যুক্ত করুন</h3>
+                <button onclick="toggleModal('productModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="text" id="prodTitle" placeholder="পণ্যের নাম" class="w-full p-2 border rounded-xl text-xs bg-slate-50">
+            <input type="text" id="prodPrice" placeholder="দাম (যেমন: ৳ ৫০০)" class="w-full p-2 border rounded-xl text-xs bg-slate-50">
+            <input type="tel" id="prodPhone" placeholder="যোগাযোগের নম্বর" class="w-full p-2 border rounded-xl text-xs bg-slate-50">
+            <textarea id="prodDesc" rows="2" placeholder="সংক্ষিপ্ত বিবরণ" class="w-full p-2 border rounded-xl text-xs bg-slate-50"></textarea>
+            <button onclick="saveMarketProduct()" class="w-full bg-emerald-600 text-white font-bold py-2 rounded-xl text-xs">বিজ্ঞাপন পোস্ট করুন</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            const targetSec = document.getElementById(`sec-${tabId}`);
+            if(targetSec) {
+                targetSec.classList.remove('hidden');
+                targetSec.classList.add('block');
+            }
+
+            // Navigation highlight
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab'));
+            const activeNav = document.getElementById(`tab-${tabId}`);
+            if(activeNav) activeNav.classList.add('active-tab');
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Search Filter Logic
+        function filterServices() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let items = document.querySelectorAll('.tab-content button, .tab-content a, .tab-content div.p-2.5');
+            
+            items.forEach(item => {
+                let text = item.textContent.toLowerCase();
+                if(text.includes(input)) {
+                    item.style.display = "";
+                } else if(input !== "") {
+                    // Search highlight optional
+                }
+            });
+        }
+
+        // Blood Filter Logic
+        function filterBlood() {
+            let selected = document.getElementById('bloodFilter').value;
+            let items = document.querySelectorAll('.blood-item');
+            
+            items.forEach(item => {
+                if(selected === 'all' || item.getAttribute('data-group') === selected) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        // Modal Toggle
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if(modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        // LocalStorage Logic for Marketplace
+        function saveMarketProduct() {
+            let title = document.getElementById('prodTitle').value;
+            let price = document.getElementById('prodPrice').value;
+            let phone = document.getElementById('prodPhone').value;
+            let desc = document.getElementById('prodDesc').value;
+
+            if(!title || !price || !phone) {
+                alert('দয়া করে প্রয়োজনীয় ঘরগুলো পূরণ করুন');
+                return;
+            }
+
+            let products = JSON.parse(localStorage.getItem('bamna_market') || '[]');
+            products.unshift({title, price, phone, desc});
+            localStorage.setItem('bamna_market', JSON.stringify(products));
+
+            toggleModal('productModal');
+            loadMarketProducts();
+            
+            // Clear Inputs
+            document.getElementById('prodTitle').value = '';
+            document.getElementById('prodPrice').value = '';
+            document.getElementById('prodPhone').value = '';
+            document.getElementById('prodDesc').value = '';
+        }
+
+        function loadMarketProducts() {
+            let products = JSON.parse(localStorage.getItem('bamna_market') || '[]');
+            let container = document.getElementById('marketList');
+            
+            // Keep default item and append new ones
+            let html = `
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm p-3 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-24 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-3xl mb-2">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">বিক্রি হবে</span>
+                        <h4 class="font-bold text-xs text-slate-800 mt-1">সেকেন্ড হ্যান্ড ফোন</h4>
+                        <p class="text-[11px] text-slate-500">ভালো কন্ডিশন, ৩ মাস ব্যবহার করা।</p>
+                    </div>
+                    <div class="mt-2 pt-2 border-t flex items-center justify-between">
+                        <span class="font-bold text-xs text-emerald-600">৳ ৪,৫০০</span>
+                        <a href="tel:01788888888" class="bg-emerald-600 text-white text-[10px] px-2 py-1 rounded">কল</a>
+                    </div>
+                </div>
+            `;
+
+            products.forEach(p => {
+                html += `
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm p-3 flex flex-col justify-between">
+                        <div>
+                            <div class="w-full h-24 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 text-3xl mb-2">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">পণ্য</span>
+                            <h4 class="font-bold text-xs text-slate-800 mt-1">${p.title}</h4>
+                            <p class="text-[11px] text-slate-500">${p.desc}</p>
+                        </div>
+                        <div class="mt-2 pt-2 border-t flex items-center justify-between">
+                            <span class="font-bold text-xs text-emerald-600">${p.price}</span>
+                            <a href="tel:${p.phone}" class="bg-emerald-600 text-white text-[10px] px-2 py-1 rounded">কল</a>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // LocalStorage Logic for Social Feed
+        function addSocialPost() {
+            let content = document.getElementById('postContent').value;
+            let author = document.getElementById('postAuthor').value || 'বেনামী ব্যবহারকারী';
+
+            if(!content) {
+                alert('দয়া করে কিছু লিখুন');
+                return;
+            }
+
+            let posts = JSON.parse(localStorage.getItem('bamna_posts') || '[]');
+            posts.unshift({author, content, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})});
+            localStorage.setItem('bamna_posts', JSON.stringify(posts));
+
+            document.getElementById('postContent').value = '';
+            document.getElementById('postAuthor').value = '';
+            loadSocialPosts();
+        }
+
+        function loadSocialPosts() {
+            let posts = JSON.parse(localStorage.getItem('bamna_posts') || '[]');
+            let container = document.getElementById('socialFeedList');
+            
+            let html = `
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-xs text-slate-800 flex items-center gap-2">
+                            <div class="w-7 h-7 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center font-bold text-xs">ব</div>
+                            মো: আলিম হোসেন
+                        </div>
+                        <span class="text-[10px] text-slate-400">১০ মিনিট আগে</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">বামনা সদরের প্রধান সড়কের ড্রেনেজ ব্যবস্থার উন্নতির জন্য স্থানীয় কর্তৃপক্ষের দৃষ্টি আকর্ষন করছি।</p>
+                    <div class="pt-2 border-t flex items-center gap-4 text-xs text-slate-500">
+                        <button class="flex items-center gap-1 hover:text-purple-600"><i class="fa-regular fa-heart"></i> লাইক</button>
+                        <button class="flex items-center gap-1 hover:text-purple-600"><i class="fa-regular fa-comment"></i> কমেন্ট</button>
+                    </div>
+                </div>
+            `;
+
+            posts.forEach(p => {
+                html += `
+                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-xs text-slate-800 flex items-center gap-2">
+                                <div class="w-7 h-7 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center font-bold text-xs">${p.author.charAt(0)}</div>
+                                ${p.author}
+                            </div>
+                            <span class="text-[10px] text-slate-400">${p.time}</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">${p.content}</p>
+                        <div class="pt-2 border-t flex items-center gap-4 text-xs text-slate-500">
+                            <button class="flex items-center gap-1 hover:text-purple-600"><i class="fa-regular fa-heart"></i> লাইক</button>
+                            <button class="flex items-center gap-1 hover:text-purple-600"><i class="fa-regular fa-comment"></i> কমেন্ট</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Submit Feedback
+        function submitFeedback(e) {
+            e.preventDefault();
+            let name = document.getElementById('fbName').value;
+            let phone = document.getElementById('fbPhone').value;
+            let msg = document.getElementById('fbMsg').value;
+
+            let feedback = JSON.parse(localStorage.getItem('bamna_feedback') || '[]');
+            feedback.unshift({name, phone, msg, time: new Date().toLocaleDateString()});
+            localStorage.setItem('bamna_feedback', JSON.stringify(feedback));
+
+            alert('আপনার বার্তা সফলভাবে এডমিনের কাছে পাঠানো হয়েছে!');
+            document.getElementById('fbName').value = '';
+            document.getElementById('fbPhone').value = '';
+            document.getElementById('fbMsg').value = '';
+        }
+
+        // Admin Auth & Inbox
+        function loginAdmin() {
+            let pass = document.getElementById('adminPass').value;
+            if(pass === '1234') {
+                document.getElementById('adminAuth').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                loadAdminFeedback();
+            } else {
+                alert('ভুল পাসকোড!');
+            }
+        }
+
+        function loadAdminFeedback() {
+            let feedback = JSON.parse(localStorage.getItem('bamna_feedback') || '[]');
+            let container = document.getElementById('adminFeedbackList');
+
+            if(feedback.length === 0) {
+                container.innerHTML = `<p class="text-slate-400 italic">এখনো কোনো নতুন বার্তা পাওয়া যায়নি।</p>`;
+                return;
+            }
+
+            let html = '';
+            feedback.forEach(f => {
+                html += `
+                    <div class="p-2.5 bg-slate-50 border rounded-xl space-y-1">
+                        <div class="flex justify-between font-bold text-slate-800">
+                            <span>${f.name} (${f.phone})</span>
+                            <span class="text-[10px] text-slate-400">${f.time}</span>
+                        </div>
+                        <p class="text-slate-600">${f.msg}</p>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Initialize App Data on Load
+        window.onload = function() {
+            loadMarketProducts();
+            loadSocialPosts();
+        }
+    </script>
+</body>
+</html>
+```
